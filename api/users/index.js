@@ -23,11 +23,11 @@ export default async function handler(request, response) {
 		// 	{new: true}
 		// );
 		// return response.status(200).json({data: updatedUser});
-
+		const data = request.body;
 		const newUser = new User({
-			name: 'Paula',
-			email: 'paula@google.com',
-			age: 24,
+			name: data.name,
+			email: data.email,
+			age: data.age,
 		});
 		await newUser.save();
 		return response.status(201).json({data: newUser});
