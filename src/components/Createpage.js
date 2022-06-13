@@ -1,9 +1,6 @@
 import {useState, useEffect} from 'react';
-import styled from 'styled-components';
 
-import User from './User.js';
-
-export default function Homepage() {
+export default function Createpage() {
 	const [{data, error}, setData] = useState({data: [], error: null});
 
 	useEffect(() => {
@@ -32,18 +29,5 @@ export default function Homepage() {
 		}
 	}, []);
 
-	return (
-		<Main>
-			{error && <div>An error occured: {error}</div>}
-			<section>
-				{data.map(item => {
-					return <User key={item._id} name={item.name} />;
-				})}
-			</section>
-		</Main>
-	);
+	return <>{error && <div>An error occured: {error}</div>}</>;
 }
-
-const Main = styled.main`
-	margin-top: 6.5em;
-`;
