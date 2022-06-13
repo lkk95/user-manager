@@ -31,7 +31,7 @@ export default function Exercise2() {
 			<h2>Exercise 2</h2>
 			<button
 				onClick={() => {
-					fetchExercise2('62a30afd76d3ae8b3bd46e26');
+					fetchExercise2('62a30b006a32bfb230222f76');
 				}}
 			>
 				Load example Data from api/users/[id]
