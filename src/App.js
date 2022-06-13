@@ -2,10 +2,13 @@ import {Routes, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Createpage from './components/Createpage';
+import Detailspage from './components/Detailspage';
 import Footer from './components/Footer';
 import HeaderCreate from './components/Header-Create';
+import HeaderDetails from './components/Header-Details';
 import HeaderHome from './components/Header-Home';
 import Homepage from './components/Homepage';
+import useStore from './hooks/useStore';
 
 export default function App() {
 	return (
@@ -26,6 +29,15 @@ export default function App() {
 						<>
 							<HeaderCreate />
 							<Createpage />
+						</>
+					}
+				/>
+				<Route
+					path="/:idFromUrl"
+					element={
+						<>
+							<HeaderDetails />
+							<Detailspage />
 						</>
 					}
 				/>

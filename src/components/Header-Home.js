@@ -16,4 +16,5 @@ const HeaderContainer = styled.header`
 	font-weight: bold;
 	border-bottom: solid 0.1em black;
 	text-align: center;
+	background-color: white;
 `;

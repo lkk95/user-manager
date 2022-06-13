@@ -1,10 +1,13 @@
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function User({name}) {
+export default function User({key, name}) {
+	const navigate = useNavigate();
+
 	return (
 		<UserContainer>
 			<h2>{name}</h2>
-			<Button>Details</Button>
+			<Button onClick={() => navigate('/' + key)}>Details</Button>
 		</UserContainer>
 	);
 }
