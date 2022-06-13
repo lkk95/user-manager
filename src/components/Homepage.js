@@ -45,5 +45,5 @@ export default function Homepage() {
 }
 
 const Main = styled.main`
-	margin-top: 6.5em;
+	margin: 6.5em 0 8em 0;
 `;
