@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function HeaderCreate() {
+export default function HeaderDetails() {
 	return (
 		<HeaderContainer>
-			<h1>Create</h1>
+			<h1>Details</h1>
 		</HeaderContainer>
 	);
 }

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function HeaderHome() {
+export default function HeaderHome({title}) {
 	return (
 		<HeaderContainer>
-			<h1>Home</h1>
+			<h1>{title}</h1>
 		</HeaderContainer>
 	);
 }
@@ -16,4 +16,5 @@ const HeaderContainer = styled.header`
 	font-weight: bold;
 	border-bottom: solid 0.1em black;
 	text-align: center;
+	background-color: white;
 `;

@@ -1,13 +1,15 @@
 import {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 import User from './User.js';
 
-export default function Homepage() {
+export default function Detailspage() {
 	const [{data, error}, setData] = useState({data: [], error: null});
+	const {idFromUrl} = useParams();
 
 	useEffect(() => {
-		fetch('/api/users')
+		fetch(`/api/users/${idFromUrl}`)
 			.then(response => {
 				if (!response.ok) {
 					throw Error(response.statusText);
@@ -27,15 +29,13 @@ export default function Homepage() {
 					error: error.message,
 				});
 			});
-	}, []);
+	}, [idFromUrl]);
 
 	return (
 		<Main>
 			{error && <div>An error occured: {error}</div>}
 			<section>
-				{data.map(item => {
-					return <User key={item._id} name={item.name} id={item._id} />;
-				})}
+				<User details name={data.name} id={data._id} age={data.age} email={data.email} />
 			</section>
 		</Main>
 	);

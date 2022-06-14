@@ -1,10 +1,24 @@
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function User({name}) {
+export default function User({id, name, age, email, details}) {
+	const navigate = useNavigate();
+
 	return (
 		<UserContainer>
-			<h2>{name}</h2>
-			<Button>Details</Button>
+			{details ? (
+				<>
+					<h2>{name}</h2>
+					<p>{age}</p>
+					<p>{email}</p>
+					<Button onClick={() => navigate('/')}>Go Back</Button>
+				</>
+			) : (
+				<>
+					<h2>{name}</h2>
+					<Button onClick={() => navigate('/' + id)}>Details</Button>
+				</>
+			)}
 		</UserContainer>
 	);
 }
