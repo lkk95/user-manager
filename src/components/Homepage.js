@@ -37,7 +37,7 @@ export default function Homepage() {
 			{error && <div>An error occured: {error}</div>}
 			<section>
 				{data.map(item => {
-					return <User key={item._id} name={item.name} />;
+					return <User key={item._id} name={item.name} id={item._id} />;
 				})}
 			</section>
 		</Main>

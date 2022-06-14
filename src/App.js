@@ -8,7 +8,6 @@ import HeaderCreate from './components/Header-Create';
 import HeaderDetails from './components/Header-Details';
 import HeaderHome from './components/Header-Home';
 import Homepage from './components/Homepage';
-import useStore from './hooks/useStore';
 
 export default function App() {
 	return (
