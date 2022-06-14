@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import Createpage from './components/Createpage';
 import Detailspage from './components/Detailspage';
 import Footer from './components/Footer';
-import HeaderCreate from './components/Header-Create';
-import HeaderDetails from './components/Header-Details';
-import HeaderHome from './components/Header-Home';
+import Header from './components/Header';
 import Homepage from './components/Homepage';
 
 export default function App() {
@@ -17,7 +15,7 @@ export default function App() {
 					path="/"
 					element={
 						<>
-							<HeaderHome />
+							<Header title="Home" />
 							<Homepage />
 						</>
 					}
@@ -26,7 +24,7 @@ export default function App() {
 					path="/create"
 					element={
 						<>
-							<HeaderCreate />
+							<Header title="Create" />
 							<Createpage />
 						</>
 					}
@@ -35,7 +33,7 @@ export default function App() {
 					path="/:idFromUrl"
 					element={
 						<>
-							<HeaderDetails />
+							<Header title="Details" />
 							<Detailspage />
 						</>
 					}

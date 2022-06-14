@@ -7,29 +7,26 @@ export default function Homepage() {
 	const [{data, error}, setData] = useState({data: [], error: null});
 
 	useEffect(() => {
-		fetchData();
-		function fetchData() {
-			fetch('/api/users')
-				.then(response => {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					} else {
-						return response.json();
-					}
-				})
-				.then(data => {
-					setData({
-						data: data.data,
-						error: null,
-					});
-				})
-				.catch(error => {
-					setData({
-						data: [],
-						error: error.message,
-					});
+		fetch('/api/users')
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				setData({
+					data: data.data,
+					error: null,
 				});
-		}
+			})
+			.catch(error => {
+				setData({
+					data: [],
+					error: error.message,
+				});
+			});
 	}, []);
 
 	return (

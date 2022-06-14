@@ -8,46 +8,34 @@ export default function Detailspage() {
 	const [{data, error}, setData] = useState({data: [], error: null});
 	const {idFromUrl} = useParams();
 
-	console.log(data);
-
 	useEffect(() => {
-		fetchUser(idFromUrl);
-		function fetchUser(idFromUrl) {
-			fetch(`/api/users/${idFromUrl}`)
-				.then(response => {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					} else {
-						return response.json();
-					}
-				})
-				.then(data => {
-					setData({
-						data: data.data,
-						error: null,
-					});
-				})
-				.catch(error => {
-					setData({
-						data: [],
-						error: error.message,
-					});
+		fetch(`/api/users/${idFromUrl}`)
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				setData({
+					data: data.data,
+					error: null,
 				});
-		}
-	}, []);
+			})
+			.catch(error => {
+				setData({
+					data: [],
+					error: error.message,
+				});
+			});
+	}, [idFromUrl]);
 
 	return (
 		<Main>
 			{error && <div>An error occured: {error}</div>}
 			<section>
-				<User
-					key={data._id}
-					name={data.name}
-					id={data._id}
-					age={data.age}
-					email={data.email}
-					details="true"
-				/>
+				<User details name={data.name} id={data._id} age={data.age} email={data.email} />
 			</section>
 		</Main>
 	);
