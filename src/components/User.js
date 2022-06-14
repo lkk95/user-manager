@@ -36,7 +36,10 @@ export default function User({id, name, age, email, details}) {
 		<UserContainer>
 			{details ? (
 				isDeleted ? (
-					'User successfully deleted'
+					<>
+						<p>User successfully deleted!</p>
+						<Button onClick={() => navigate('/')}>Go Back</Button>
+					</>
 				) : (
 					<>
 						<h2>{name}</h2>
