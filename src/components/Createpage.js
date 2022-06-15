@@ -1,4 +1,3 @@
-import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
@@ -6,12 +5,40 @@ export default function Createpage({addTask}) {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [age, setAge] = useState('');
-	const [newUser, setNewUser] = useState({});
+	const [{data, error}, setData] = useState({data: [], error: null});
+
+	function postUser(data) {
+		fetch('/api/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				setData({
+					data: data.data,
+					error: null,
+				});
+			})
+			.catch(error => {
+				setData({
+					data: [],
+					error: error.message,
+				});
+			});
+	}
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		const userInfo = {_id: nanoid(), name, email, age};
-		setNewUser(userInfo);
+		postUser({name, email, age});
 		setName('');
 		setEmail('');
 		setAge('');
@@ -33,7 +60,6 @@ export default function Createpage({addTask}) {
 				<input id="age" type="number" value={age} onChange={event => setAge(event.target.value)} />
 				<SubmitButton type="submit" value="Submit" />
 			</FormContainer>
-			<p>{JSON.stringify(newUser)}</p>
 		</Main>
 	);
 }
